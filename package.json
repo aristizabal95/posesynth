@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@tensorflow-models/posenet": "^2.2.2",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}
