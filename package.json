@@ -1,10 +1,12 @@
 {
-  "dependencies": {
-    "@tensorflow-models/posenet": "^2.2.2",
-    "express": "^4.17.1",
-    "nodemon": "^2.0.12"
-  },
-  "scripts": {
-    "start": "node app.js"
-  }
+    "dependencies": {
+        "@tensorflow-models/posenet": "^2.2.2",
+        "express": "^4.17.1",
+        "nodemon": "^2.0.12",
+        "osc-js": "^2.1.2",
+        "ws": "^8.2.2"
+    },
+    "scripts": {
+        "start": "browserify public_requires.js -o public/osc.js && node app.js"
+    }
 }

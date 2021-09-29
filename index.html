@@ -2,41 +2,42 @@
 <html lang="en">
 
 <head>
-  <title>Multiple object detection using pre trained model in TensorFlow.js</title>
-  <meta charset="utf-8">
-  <!-- Import the webpage's stylesheet -->
-  <base href="/">
-  <link rel="stylesheet" href="public/style.css" type="text/css">
+    <title>Multiple object detection using pre trained model in TensorFlow.js</title>
+    <meta charset="utf-8">
+    <!-- Import the webpage's stylesheet -->
+    <base href="/">
+    <link rel="stylesheet" href="public/style.css" type="text/css">
 </head>
 
 <body>
-  <h1>Multiple object detection using pre trained model in TensorFlow.js</h1>
+    <h1>Multiple object detection using pre trained model in TensorFlow.js</h1>
 
-  <p>Wait for the model to load before clicking the button to enable the webcam - at which point it will become visible to use.</p>
+    <p>Wait for the model to load before clicking the button to enable the webcam - at which point it will become visible to use.</p>
 
-  <section id="demos" class="invisible">
+    <section id="demos" class="invisible">
 
-    <p>Hold some objects up close to your webcam to get a real-time classification! When ready click "enable webcam" below and accept access to the webcam when the browser asks (check the top left of your window)</p>
+        <p>Hold some objects up close to your webcam to get a real-time classification! When ready click "enable webcam" below and accept access to the webcam when the browser asks (check the top left of your window)</p>
 
-    <div id="liveView" class="camView">
-      <button id="webcamButton">Enable Webcam</button>
-      <video id="webcam" autoplay muted width="640" height="480"></video>
-    </div>
-  </section>
+        <div id="liveView" class="camView">
+            <button id="webcamButton">Enable Webcam</button>
+            <canvas id="output" width="640" height="480"></canvas>
+            <video id="webcam" autoplay muted width="640" height="480"></video>
+        </div>
+    </section>
 
-  <!-- Import TensorFlow.js library -->
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
-  <!-- Load Posenet -->
-  <script src="https://unpkg.com/@tensorflow-models/posenet">
-  </script>
-  <script type="text/javascript">
-    posenet.load().then(function(net) {
-      // posenet model loaded
-    });
-  </script>
+    <!-- Require the peer dependencies of pose-detection. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
 
-  <!-- Import the page's JavaScript to do some stuff -->
-  <script src="public/script.js" defer></script>
+    <!-- You must explicitly require a TF.js backend if you're not using the TF.js union bundle. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+    <!-- Alternatively you can use the WASM backend: <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm/dist/tf-backend-wasm.js"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+    <!-- Import the page's JavaScript to do some stuff -->
+    <script src="public/osc.js" defer></script>
+    <script src="public/pose.js" defer></script>
+    <script src="public/script.js" defer></script>
 </body>
 
 </html>
