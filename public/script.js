@@ -54,6 +54,11 @@ function enableCam(event) {
         video: true,
     };
 
+    video.onloadedmetadata = () => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+    };
+
     // Activate the webcam stream.
     navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
         video.srcObject = stream;
@@ -64,7 +69,11 @@ function enableCam(event) {
 // Placeholder function for next step.
 function predictWebcam() {
     detector.estimatePoses(video).then((preds) => {
-        pose = new Pose(preds[0]["keypoints"]);
+        const kp = preds[0]["keypoints"];
+        const normal_kp = poseDetection.calculators.keypointsToNormalizedKeypoints(
+            kp, { width: video.videoWidth, height: video.videoHeight }
+        );
+        pose = new Pose(normal_kp);
         pose.draw(score_thresh, ctx);
     });
     window.requestAnimationFrame(predictWebcam);

@@ -45,8 +45,8 @@ class Pose {
         for (const landmark in points) {
             const point = points[landmark];
             this.drawPoint(point, ctx, 5, 2);
-            const x = point["x"] / 2;
-            const y = point["y"] / 2;
+            const x = point["x"] * canvas.width;
+            const y = point["y"] * canvas.height;
             const score = point["score"];
             const message = new OSC.Message(`/${landmark}`, x, y, score);
             osc.send(message);
@@ -54,8 +54,8 @@ class Pose {
     }
 
     drawPoint(point, ctx, radius, strokeWidth) {
-        const x = point["x"] / 2;
-        const y = point["y"] / 2 + 60;
+        const x = point["x"] * canvas.width;
+        const y = point["y"] * canvas.height;
         ctx.fillStyle = point["color"];
         var circle = new Path2D();
         circle.arc(x, y, radius, 0, 2 * Math.PI);
