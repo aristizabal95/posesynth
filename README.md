@@ -27,7 +27,7 @@ El objetivo de este proyecto es mostrar cómo podemos usar modelos ya existentes
   
 - ### MoveNet:
   
-  MoveNet es un modelo de inteligencia artificial que está disponible en TensorFlow Hub. Este modelo predice keypoints de 17 partes del cuerpo en tiempo real. Se puede ejecutar en la web con aceleramiento de hardware (WebGL). [Más información aquí](https://blog.tensorflow.org/2021/05/next-generation-pose-detection-with-movenet-and-tensorflowjs.html)
+  MoveNet es un modelo de inteligencia artificial que está disponible en TensorFlow Hub. Este modelo predice keypoints de 17 partes del cuerpo en tiempo real. Se puede ejecutar en la web con aceleramiento de hardware (WebGL). [Más información aquí](https://blog.tensorflow.org/2021/05/next-generation-pose-detection-with-movenet-and-tensorflowjs.html). Demostración [aquí](https://colab.research.google.com/github/tensorflow/hub/blob/master/examples/colab/movenet.ipynb)
   
 
 ## Cómo correrlo:
