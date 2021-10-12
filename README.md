@@ -16,6 +16,9 @@ El objetivo de este proyecto es mostrar cómo podemos usar modelos ya existentes
   
   Node.js es un entorno de ejecución de Javascript ampliamente usado en diversas aplicaciones, principalmente Web.
   
+- ## OSC:
+  Protocolo "Open Sound Control", que permite la comunicación rápida y efectiva entre dispositivos a través de mensajes por la web. Como su nombre lo indica, es ampliamente usado para controlar dispositivos sonoros.
+  
 - ### TensorFlow:
 
   <img src="https://www.nxp.com/assets/images/en/logos-external/TensorFlow-Logo-ML.png" width="128px"></img>
@@ -42,4 +45,14 @@ El objetivo de este proyecto es mostrar cómo podemos usar modelos ya existentes
   npm install
   ```
   
-4. 
+4. Correr el servidor web
+
+  ```shell
+  npm start
+  ```
+
+5. Ir al buscador y entrar a la página http://localhost:3000
+6. Verificar que se pueda prender la cámara y que los keypoints se visualizen en el buscador. De no ser así, es necesario [habilitar el aceleramiento de hardware en su buscador](https://www.computerhope.com/issues/ch002154.htm)
+7. Abrir Pure Data e instalar la extensión mrpeach. Requerido para comunicarse con el buscador a través del protocolo OSC
+8. Hacer doble click al archivo `synth.pd` en la carpeta raíz del proyecto
+9. Jugar!
