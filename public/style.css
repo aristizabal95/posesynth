@@ -1,12 +1,22 @@
 body {
     font-family: helvetica, arial, sans-serif;
     margin: 2em;
-    color: #3D3D3D;
+    color: #FFF;
+    background-color: #1b0028;
+}
+
+#wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#wrapper * {
+    text-align: center;
 }
 
 h1 {
     font-style: italic;
-    color: #FF6F00;
+    color: #01FFFF;
 }
 
 canvas#output {
@@ -47,6 +57,16 @@ section {
     border: 1px dashed rgba(255, 255, 255, 0.7);
     z-index: 2;
     font-size: 12px;
+}
+
+#video-out {
+    position: relative;
+}
+
+.centered-block {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .highlighter {

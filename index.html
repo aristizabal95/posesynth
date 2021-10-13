@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Multiple object detection using pre trained model in TensorFlow.js</title>
+    <title>PoseSynth</title>
     <meta charset="utf-8">
     <!-- Import the webpage's stylesheet -->
     <base href="/">
@@ -10,20 +10,24 @@
 </head>
 
 <body>
-    <h1>Multiple object detection using pre trained model in TensorFlow.js</h1>
+    <div id="wrapper">
+        <h1>PoseSynth con MoveNet</h1>
 
-    <p>Wait for the model to load before clicking the button to enable the webcam - at which point it will become visible to use.</p>
+        <p>El botón de "Iniciar cámara" será habilitado una vez el modelo cargue. Por favor espera.</p>
 
-    <section id="demos" class="invisible">
+        <section id="demos" class="invisible">
 
-        <p>Hold some objects up close to your webcam to get a real-time classification! When ready click "enable webcam" below and accept access to the webcam when the browser asks (check the top left of your window)</p>
+            <p>Habilita la cámara y párate al frente para generar un esqueleto en tiempo real!</p>
 
-        <div id="liveView" class="camView">
-            <button id="webcamButton">Enable Webcam</button>
-            <canvas id="output"></canvas>
-            <video id="webcam" autoplay muted></video>
-        </div>
-    </section>
+            <div id="liveView" class="camView">
+                <button id="webcamButton">Iniciar cámara</button>
+                <div id="video-out">
+                    <canvas id="output" class="centered-block"></canvas>
+                    <video id="webcam" class="centered-block" autoplay muted></video>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- Require the peer dependencies of pose-detection. -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
