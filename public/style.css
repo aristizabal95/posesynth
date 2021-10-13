@@ -28,6 +28,10 @@ video {
     display: block;
 }
 
+#output {
+    z-index: 1;
+}
+
 section {
     opacity: 1;
     transition: opacity 500ms ease-in-out;
