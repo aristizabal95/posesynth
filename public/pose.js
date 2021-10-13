@@ -45,8 +45,8 @@ class Pose {
         for (const landmark in points) {
             const point = points[landmark];
             this.drawPoint(point, ctx, 5, 2);
-            const x = point["x"] * canvas.width;
-            const y = point["y"] * canvas.height;
+            const x = point["x"];
+            const y = point["y"];
             const score = point["score"];
             const message = new OSC.Message(`/${landmark}`, x, y, score);
             osc.send(message);
