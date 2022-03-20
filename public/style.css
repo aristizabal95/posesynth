@@ -22,14 +22,12 @@ h1 {
 canvas#output {
     position: absolute;
     top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 video {
     display: block;
-}
-
-#output {
-    z-index: 1;
 }
 
 section {
@@ -67,15 +65,20 @@ section {
     position: relative;
 }
 
-.centered-block {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 .highlighter {
     background: rgba(0, 255, 0, 0.25);
     border: 1px dashed #fff;
     z-index: 1;
     position: absolute;
+}
+
+#liveView {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#liveView>div {
+    margin: 10px 0px;
 }

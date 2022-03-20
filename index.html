@@ -18,12 +18,15 @@
         <section id="demos" class="invisible">
 
             <p>Habilita la cámara y párate al frente para generar un esqueleto en tiempo real!</p>
+            <button id="webcamButton">Iniciar cámara</button>
 
             <div id="liveView" class="camView">
-                <button id="webcamButton">Iniciar cámara</button>
                 <div id="video-out">
-                    <canvas id="output" class="centered-block"></canvas>
-                    <video id="webcam" class="centered-block" autoplay muted></video>
+                    <canvas id="output"></canvas>
+                    <video id="webcam" autoplay muted></video>
+                </div>
+                <div id="hydra-out">
+                    <canvas id="hydra" class="centered-block"></canvas>
                 </div>
             </div>
         </section>
@@ -41,6 +44,7 @@
     <!-- Import the page's JavaScript to do some stuff -->
     <script src="public/osc.js" defer></script>
     <script src="public/pose.js" defer></script>
+    <script src="https://unpkg.com/hydra-synth"></script>
     <script src="public/script.js" defer></script>
 </body>
 
