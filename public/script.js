@@ -8,24 +8,9 @@ const osc = new OSC();
 var hydra = new Hydra({ canvas: hydra_canvas });
 osc.open();
 var ctx = undefined;
-// TODO
-var detector = undefined;
 const score_thresh = 0.3;
-
-tf.loadGraphModel("public/movenet-thunder/model.json").then((loadedModel) => {
-  const detectorConfig = {
-    modelType: poseDetection.movenet.modelType.SINGLEPOSE_THUNDER,
-  };
-  poseDetection
-    .createDetector(poseDetection.SupportedModels.MoveNet, detectorConfig)
-    .then((detectorObject) => {
-      detector = detectorObject;
-      if (canvas.getContext) {
-        ctx = canvas.getContext("2d");
-      }
-      demosSection.classList.remove("invisible");
-    });
-});
+const pose = new Pose(canvas);
+demosSection.classList.remove("invisible");
 
 // Check if webcam access is supported.
 function getUserMediaSupported() {
@@ -44,7 +29,7 @@ if (getUserMediaSupported()) {
 // Enable the live webcam view and start classification.
 function enableCam(event) {
   // Only continue if the COCO-SSD has finished loading.
-  if (!detector) {
+  if (!pose.detector) {
     return;
   }
 
@@ -70,7 +55,7 @@ function enableCam(event) {
       height: vh,
       width: vw,
     });
-    hydra.synth.osc(4, 0.1, 1.2).out();
+    drawHydra();
   };
 
   // Activate the webcam stream.
@@ -80,7 +65,15 @@ function enableCam(event) {
   });
 }
 
-function drawHydra(pose) {
+function drawHydra() {
+  calc_angle = () => {
+    x_diff = pose.left_shoulder["x"] - pose.right_shoulder["x"];
+    y_diff = pose.left_shoulder["y"] - pose.right_shoulder["y"];
+    angle = Math.tanh(y_diff / x_diff);
+    console.log(angle);
+    return angle;
+  };
+
   hydra.synth
     .osc(5, 0.1)
     .modulate(noise(8), 0.22)
@@ -90,21 +83,21 @@ function drawHydra(pose) {
     )
     .scale(0.72)
     .color(0.99, 1.014, 1)
-    .scale(pose.nose["x"])
+    .scale(() => pose.nose["x"])
+    .rotate(calc_angle, 0)
     .out(o0);
 }
 
 // Placeholder function for next step.
 function predictWebcam() {
-  detector.estimatePoses(video).then((preds) => {
+  pose.detector.estimatePoses(video).then((preds) => {
     const kp = preds[0]["keypoints"];
     const normal_kp = poseDetection.calculators.keypointsToNormalizedKeypoints(
       kp,
       { width: video.videoWidth, height: video.videoHeight }
     );
-    pose = new Pose(normal_kp);
+    pose.update_points(normal_kp);
     pose.draw(score_thresh, ctx);
-    drawHydra(pose);
   });
   window.requestAnimationFrame(predictWebcam);
 }
