@@ -10,6 +10,7 @@ osc.open();
 var ctx = undefined;
 const score_thresh = 0.3;
 const pose = new Pose(canvas);
+const hydra_machine = new HydraStateMachine(pose);
 demosSection.classList.remove("invisible");
 
 // Check if webcam access is supported.
@@ -55,7 +56,7 @@ function enableCam(event) {
       height: vh,
       width: vw,
     });
-    drawHydra();
+    hydra_machine.set_hydra(hydra);
   };
 
   // Activate the webcam stream.
@@ -70,7 +71,6 @@ function drawHydra() {
     x_diff = pose.left_shoulder["x"] - pose.right_shoulder["x"];
     y_diff = pose.left_shoulder["y"] - pose.right_shoulder["y"];
     angle = Math.tanh(y_diff / x_diff);
-    console.log(angle);
     return angle;
   };
 
@@ -98,6 +98,7 @@ function predictWebcam() {
     );
     pose.update_points(normal_kp);
     pose.draw(score_thresh, ctx);
+    hydra_machine.update();
   });
   window.requestAnimationFrame(predictWebcam);
 }
