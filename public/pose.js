@@ -47,7 +47,8 @@ class Pose {
     return [0.0, 0.0, 0.0];
   }
 
-  create_detector() {
+  async create_detector() {
+    await tf.ready();
     tf.loadGraphModel("public/movenet-thunder/model.json").then(
       (loadedModel) => {
         const detectorConfig = {

@@ -37,10 +37,6 @@ function enableCam(event) {
   // Hide the button once clicked.
   event.target.classList.add("removed");
 
-  // getUsermedia parameters to force video but not audio.
-  const constraints = {
-    video: true,
-  };
 
   video.onloadedmetadata = () => {
     vw = video.videoWidth / 2;
@@ -59,8 +55,17 @@ function enableCam(event) {
     hydra_machine.set_hydra(hydra);
   };
 
-  // Activate the webcam stream.
-  navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
+  // getUsermedia parameters to force video but not audio.
+  var facingMode = "user"; // Can be 'user' or 'environment' to access back or front camera (NEAT!)
+  var constraints = {
+    audio: false,
+    video: {
+    facingMode: facingMode
+    }
+  };
+
+  /* Stream it to video element */
+  navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
     video.srcObject = stream;
     video.addEventListener("loadeddata", predictWebcam);
   });
@@ -76,16 +81,16 @@ function drawHydra() {
 
   hydra.synth
     .osc(5, 0.1)
-    .modulate(noise(8), 0.22)
-    .diff(o0)
+    .modulate(noise(7), 0.22)
+    .diff(o-1)
     .modulateScrollY(
-      hydra.synth.osc(2).modulate(hydra.synth.osc().rotate(), 0.11)
+      hydra.synth.osc(1).modulate(hydra.synth.osc().rotate(), 0.11)
     )
-    .scale(0.72)
-    .color(0.99, 1.014, 1)
+    .scale(-1.72)
+    .color(-1.99, 1.014, 1)
     .scale(() => pose.nose["x"])
-    .rotate(calc_angle, 0)
-    .out(o0);
+    .rotate(calc_angle, -1)
+    .out(o-1);
 }
 
 // Placeholder function for next step.
