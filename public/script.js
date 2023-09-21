@@ -103,6 +103,7 @@ function predictWebcam() {
     );
     pose.update_points(normal_kp);
     pose.draw(score_thresh, ctx);
+    pose.send_messages(score_thresh);
     hydra_machine.update();
   });
   window.requestAnimationFrame(predictWebcam);

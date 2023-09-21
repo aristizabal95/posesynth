@@ -43,6 +43,28 @@ class Pose {
     this.right_ankle = this.build_point(points[16]);
   }
 
+  get_points() {
+    return [
+      this.nose,
+      this.left_eye,
+      this.right_eye,
+      this.left_ear,
+      this.right_ear,
+      this.left_shoulder,
+      this.right_shoulder,
+      this.left_elbow,
+      this.right_elbow,
+      this.left_wrist,
+      this.right_wrist,
+      this.left_hip,
+      this.right_hip,
+      this.left_knee,
+      this.right_knee,
+      this.left_ankle,
+      this.right_ankle,
+    ]
+  }
+
   default_point() {
     return [0.0, 0.0, 0.0];
   }
@@ -92,12 +114,28 @@ class Pose {
     for (const landmark in points) {
       const point = points[landmark];
       this.drawPoint(point, ctx, 5, 2);
+    }
+  }
+
+  send_messages(score_thresh) {
+    var points = this.filter_score(score_thresh);
+    for (const landmark in points) {
+      const point = points[landmark];
       const x = point["x"];
       const y = point["y"];
       const score = point["score"];
       const message = new OSC.Message(`/${landmark}`, x, y, score);
       osc.send(message);
     }
+
+    points = this.get_points();
+    const wek_message = new OSC.Message(`/wek/inputs`);
+    for (var i=0; i < points.length; i++) {
+      var point = points[i];
+      wek_message.add(point["x"]);
+      wek_message.add(point["y"]);
+    }
+    osc.send(wek_message)
   }
 
   drawPoint(point, ctx, radius, strokeWidth) {
