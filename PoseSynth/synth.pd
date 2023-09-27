@@ -6,10 +6,8 @@
 #X obj 44 113 mrpeach/unpackOSC;
 #X obj 44 166 outlet;
 #X obj 44 140 route /posesynth;
-#X obj 182 142 print;
 #X connect 1 0 2 0;
 #X connect 2 0 4 0;
-#X connect 2 0 5 0;
 #X connect 4 0 3 0;
 #X restore 10 7 pd osc;
 #X obj 14 104 unpack f f f;
@@ -101,7 +99,7 @@
 #X connect 7 0 5 1;
 #X restore 135 453 pd click;
 #X obj 135 365 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 1 1 1;
+#000000 0 1 1;
 #X obj 188 408 loadbang;
 #X obj 10 29 s \$0-oscmsgs;
 #X obj 14 59 r \$0-oscmsgs;
@@ -534,7 +532,7 @@
 #X obj 122 162 < 0.08;
 #X obj 39 162 < 0.06;
 #X obj 416 140 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 1 1 1;
+#000000 0 1 1;
 #X obj 416 45 r \$0-rwx;
 #X obj 424 69 r \$0-rsx;
 #X obj 315 224 s \$0-l-acting;
@@ -639,14 +637,14 @@ del usuario;
 #X obj 15 241 outlet;
 #X obj 15 194 change;
 #X obj 11 34 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
-1 1 1;
+0 1 1;
 #X obj 15 172 f;
 #X obj 22 78 t b b;
 #X obj 54 152 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 1;
 #X msg 54 101 stop;
 #X obj 15 216 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 1 1 1;
+#000000 0 1 1;
 #X obj 54 131 del;
 #X obj 96 102 inlet;
 #X floatatom 96 124 5 0 0 0 - - - 0 0 1, f 5;
@@ -709,14 +707,14 @@ del usuario;
 #X obj 15 241 outlet;
 #X obj 15 194 change;
 #X obj 11 34 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
-1 1 1;
+0 1 1;
 #X obj 15 172 f;
 #X obj 22 78 t b b;
 #X obj 54 152 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 1;
 #X msg 54 101 stop;
 #X obj 15 216 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 1 1 1;
+#000000 0 1 1;
 #X obj 54 131 del;
 #X obj 96 102 inlet;
 #X floatatom 96 124 5 0 0 0 - - - 0 0 1, f 5;
