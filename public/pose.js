@@ -124,7 +124,7 @@ class Pose {
       const x = point["x"];
       const y = point["y"];
       const score = point["score"];
-      const message = new OSC.Message(`/${landmark}`, x, y, score);
+      const message = new OSC.Message(`/posesynth/${landmark}`, x, y, score);
       osc.send(message);
     }
 
