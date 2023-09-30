@@ -1,0 +1,74 @@
+#N canvas 347 229 877 623 10;
+#X declare -lib mrpeach;
+#X obj -30 -30 preset_hub k12 1 %hidden%;
+#X obj 20 -20 route /wek/outputs;
+#X obj 20 5 unpack f f f f f;
+#X obj 127 -113 declare -lib mrpeach;
+#X obj 20 -45 mrpeach/unpackOSC;
+#X obj 20 -70 mrpeach/udpreceive 12000;
+#X obj 70 200 mrpeach/udpsend;
+#X obj 70 170 mrpeach/packOSC;
+#X obj 70 220 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 1 1 1;
+#X msg 180 180 connect 127.0.0.1 7099;
+#X msg 20 63 set /output1 \$1;
+#X msg 20 108 /output1 -0.0227379;
+#X obj 30 80 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 1;
+#X obj 132 85 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 1;
+#X msg 122 110 /output2 0.0409896;
+#X obj 240 85 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 1;
+#X msg 230 110 /output3 -0.0135983;
+#X msg 122 65 set /output2 \$1;
+#X msg 230 65 set /output3 \$1;
+#X obj 350 80 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 1;
+#X msg 340 105 /output4 -0.558337;
+#X obj 458 80 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 1;
+#X msg 448 105 /output5 -0.00297065;
+#X msg 340 60 set /output4 \$1;
+#X msg 448 60 set /output5 \$1;
+#X obj 20 40 change;
+#X obj 120 40 change;
+#X obj 230 40 change;
+#X obj 340 40 change;
+#X obj 450 30 change;
+#X connect 1 0 2 0;
+#X connect 2 0 25 0;
+#X connect 2 1 26 0;
+#X connect 2 2 27 0;
+#X connect 2 3 28 0;
+#X connect 2 4 29 0;
+#X connect 4 0 1 0;
+#X connect 5 0 4 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X connect 9 0 6 0;
+#X connect 10 0 11 0;
+#X connect 10 0 12 0;
+#X connect 11 0 7 0;
+#X connect 12 0 11 0;
+#X connect 13 0 14 0;
+#X connect 14 0 7 0;
+#X connect 15 0 16 0;
+#X connect 16 0 7 0;
+#X connect 17 0 14 0;
+#X connect 17 0 13 0;
+#X connect 18 0 16 0;
+#X connect 18 0 15 0;
+#X connect 19 0 20 0;
+#X connect 20 0 7 0;
+#X connect 21 0 22 0;
+#X connect 22 0 7 0;
+#X connect 23 0 20 0;
+#X connect 23 0 19 0;
+#X connect 24 0 22 0;
+#X connect 24 0 21 0;
+#X connect 25 0 10 0;
+#X connect 26 0 17 0;
+#X connect 27 0 18 0;
+#X connect 28 0 23 0;
+#X connect 29 0 24 0;

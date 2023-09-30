@@ -1,0 +1,7 @@
+#N canvas 839 268 134 106 10;
+#X obj -30 -30 preset_hub k12 1 %hidden%;
+#X obj 10 40 effect-rack;
+#X obj 10 18 adc~ 2;
+#X obj 10 63 dac~ 2;
+#X connect 1 0 3 0;
+#X connect 2 0 1 0;

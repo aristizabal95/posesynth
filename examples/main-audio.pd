@@ -1,0 +1,32 @@
+#N canvas 839 268 432 296 10;
+#X obj -30 -30 preset_hub k12 1 %hidden%;
+#X obj 200 239 soundfiler;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array \$0-sf-array 630400 float 2 #46d5cf #46d5cf;
+#X coords 0 1 630400 -1 200 140 1;
+#X restore 200 39 graph;
+#X obj 30 200 tabplay~ \$0-sf-array;
+#X obj 30 179 spigot;
+#X obj 63 159 tgl 15 0 empty empty empty 17 7 0 10 #ff0000 #000000
+#000000 1 1 1;
+#X obj 63 109 loadbang;
+#X msg 63 134 1;
+#X obj 30 139 bng 24 250 50 0 empty empty empty 17 7 0 10 #04ff00 #000000
+#000000 1;
+#X msg 200 209 read -resize audio.wav \$0-sf-array;
+#X obj 30 245 dac~;
+#X text 10 119 start!;
+#X text 80 159 stop loop;
+#X obj 200 189 loadbang;
+#X obj 30 222 effect-rack;
+#X connect 3 0 14 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 1;
+#X connect 6 0 7 0;
+#X connect 7 0 5 0;
+#X connect 8 0 4 0;
+#X connect 9 0 1 0;
+#X connect 13 0 9 0;
+#X connect 14 0 10 0;
+#X connect 14 0 10 1;
